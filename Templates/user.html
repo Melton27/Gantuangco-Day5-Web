@@ -1,0 +1,8 @@
+{% extends "layout.html" %}
+ {%  block content %}
+<form method = "POST" action = "/create" enctype = "multipart/form-data">
+    <input type = "text" name = "username">
+    <input type = "file" name = "profile_image">
+    <input type = "submit">
+</form>
+{% endblock content %}

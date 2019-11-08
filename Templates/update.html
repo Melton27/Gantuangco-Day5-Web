@@ -1,0 +1,49 @@
+<html>
+	<head>
+		<title>{{t}}</title>
+		<link rel="stylesheet" type="text/css"  href="{{ url_for('static',filename='assets/style(2).css')}}" >
+	</head>
+	<style>	
+		h1{
+			font-family:"Arial Black", Gadget, sans-serif;
+		}
+		body{
+			background-color:white;
+		}
+		.font{
+			color: red;
+		}
+	</style>
+<body>
+	<h1>{{h}}</h1>
+	<hr>
+	<h3>Update tasks with a reference</h3>
+	<form action="/action3" method="POST">
+	<div class = "font">
+	{% for task in tasks %}
+		Unique Object ID : {{ task['_id'] }}<br/>
+	<input type="text" name="_id" value="{{ task['_id'] }}" hidden>
+	</div>
+<div class ="table">
+	<table>
+	<tr>
+	<td>Task Name</td><td> : </td><td><input type="text" name="name" value="{{ task['name'] }}" placeholder="{{ task['name'] }}"></td>
+	</tr>
+	<tr>
+	<td>Description</td><td> : </td><td><textarea type="text" name="desc" rows=3 cols=30 placeholder="{{ task['desc'] }}"> {{ task['desc'] }} </textarea></td>
+	</tr>
+	<tr>
+	<td>Date</td><td> : </td><td><input type="text" name="date" value="{{ task['date'] }}" placeholder="{{ task['date'] }}"></td>
+	</tr>
+	<tr>
+	<td>Priority</td><td> : </td><td><input type="text" name="pr" value="{{ task['pr'] }}" placeholder="{{ task['pr'] }}"></td>
+	</tr>
+	</table>
+</div>
+	{% endfor %}
+		<button type="submit"> Update Task </button>
+		<br/>
+	</form>
+	<a href="/"><b>Return to TaskList</b></a>
+</body>
+</html>
